@@ -89,7 +89,10 @@ public class ResearchUiScreen extends SolUiBaseScreen {
     public void updateCustom(SolApplication solApplication, SolInputManager.InputPointer[] inputPointers, boolean clickedOutside) {
         researchTextControl.setDisplayName("Research: " + Integer.toString((int) researchSystem.getResearchPoints()));
 
-        researchButtons.values().forEach(buttons -> controls.removeAll(buttons));
+        for (List<SolUiControl> researchButton : researchButtons.values()) {
+            controls.removeAll(researchButton);
+        }
+
         researchButtons.clear();
         populateResearchButtons();
 
